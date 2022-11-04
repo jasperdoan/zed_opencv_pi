@@ -1,0 +1,95 @@
+[0.000000] (-) TimerEvent: {}
+[0.000167] (zed_cv) JobQueued: {'identifier': 'zed_cv', 'dependencies': OrderedDict()}
+[0.000216] (zed_cv) JobStarted: {'identifier': 'zed_cv'}
+[0.098148] (-) TimerEvent: {}
+[0.203337] (-) TimerEvent: {}
+[0.304072] (-) TimerEvent: {}
+[0.404642] (-) TimerEvent: {}
+[0.504953] (-) TimerEvent: {}
+[0.605266] (-) TimerEvent: {}
+[0.705708] (-) TimerEvent: {}
+[0.806021] (-) TimerEvent: {}
+[0.906417] (-) TimerEvent: {}
+[1.006937] (-) TimerEvent: {}
+[1.107613] (-) TimerEvent: {}
+[1.208025] (-) TimerEvent: {}
+[1.308322] (-) TimerEvent: {}
+[1.408673] (-) TimerEvent: {}
+[1.509050] (-) TimerEvent: {}
+[1.609350] (-) TimerEvent: {}
+[1.709736] (-) TimerEvent: {}
+[1.810184] (-) TimerEvent: {}
+[1.910517] (-) TimerEvent: {}
+[2.010884] (-) TimerEvent: {}
+[2.111261] (-) TimerEvent: {}
+[2.211707] (-) TimerEvent: {}
+[2.312209] (-) TimerEvent: {}
+[2.412579] (-) TimerEvent: {}
+[2.512896] (-) TimerEvent: {}
+[2.613285] (-) TimerEvent: {}
+[2.713623] (-) TimerEvent: {}
+[2.813976] (-) TimerEvent: {}
+[2.914446] (-) TimerEvent: {}
+[3.014776] (-) TimerEvent: {}
+[3.037094] (zed_cv) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/zed_cv', 'build', '--build-base', '/home/jasper/dev/zed_opencv_pi/build/zed_cv/build', 'install', '--prefix', '/home/jasper/dev/zed_opencv_pi/install/zed_cv', '--record', '/home/jasper/dev/zed_opencv_pi/build/zed_cv/install.log', '--single-version-externally-managed'], 'cwd': '/home/jasper/dev/zed_opencv_pi/src/zed_cv', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'jasper', 'SSH_AGENT_PID': '1219', 'XDG_SESSION_TYPE': 'x11', 'GIT_ASKPASS': '/snap/code/112/usr/share/code/resources/app/extensions/git/dist/askpass.sh', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/home/jasper', 'CHROME_DESKTOP': 'code-url-handler.desktop', 'OLDPWD': '/home/jasper', 'TERM_PROGRAM_VERSION': '1.73.0', 'DESKTOP_SESSION': 'ubuntu', 'GIO_LAUNCHED_DESKTOP_FILE': '/var/lib/snapd/desktop/applications/code_code.desktop', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'VSCODE_GIT_ASKPASS_MAIN': '/snap/code/112/usr/share/code/resources/app/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/snap/code/112/usr/share/code/code', 'MANAGERPID': '936', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '10032', 'IM_CONFIG_PHASE': '1', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'jasper', 'JOURNAL_STREAM': '8:40377', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'jasper', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/home/jasper/.local/bin:/opt/ros/foxy/bin:/home/jasper/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/wlux:@/tmp/.ICE-unix/1258,unix/wlux:/tmp/.ICE-unix/1258', 'INVOCATION_ID': '8bf05422c66648c0a29de23d691fecf1', 'XDG_MENU_PREFIX': 'gnome-', 'BAMF_DESKTOP_FILE_HINT': '/var/lib/snapd/desktop/applications/code_code.desktop', 'XDG_RUNTIME_DIR': '/run/user/1000', 'GDK_BACKEND': 'x11', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'Unity', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'VSCODE_GIT_IPC_HANDLE': '/run/user/1000/vscode-git-08f60d0b8d.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'GSETTINGS_SCHEMA_DIR': '/snap/code/112/usr/share/glib-2.0/schemas', 'AMENT_PREFIX_PATH': '/opt/ros/foxy', 'ORIGINAL_XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '--ms-enable-electron-run-as-node', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/jasper/dev/zed_opencv_pi/build/zed_cv', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'COLCON': '1'}, 'shell': False}
+[3.114998] (-) TimerEvent: {}
+[3.215636] (-) TimerEvent: {}
+[3.316087] (-) TimerEvent: {}
+[3.416430] (-) TimerEvent: {}
+[3.498603] (zed_cv) StderrLine: {'line': b"/home/jasper/.local/lib/python3.8/site-packages/setuptools/dist.py:771: UserWarning: Usage of dash-separated 'script-dir' will not be supported in future versions. Please use the underscore name 'script_dir' instead\n"}
+[3.499085] (zed_cv) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.499569] (zed_cv) StderrLine: {'line': b"/home/jasper/.local/lib/python3.8/site-packages/setuptools/dist.py:771: UserWarning: Usage of dash-separated 'install-scripts' will not be supported in future versions. Please use the underscore name 'install_scripts' instead\n"}
+[3.499748] (zed_cv) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.516520] (-) TimerEvent: {}
+[3.617235] (-) TimerEvent: {}
+[3.621342] (zed_cv) StdoutLine: {'line': b'running egg_info\n'}
+[3.622421] (zed_cv) StdoutLine: {'line': b'creating ../../build/zed_cv/zed_cv.egg-info\n'}
+[3.642406] (zed_cv) StdoutLine: {'line': b'writing ../../build/zed_cv/zed_cv.egg-info/PKG-INFO\n'}
+[3.642887] (zed_cv) StdoutLine: {'line': b'writing dependency_links to ../../build/zed_cv/zed_cv.egg-info/dependency_links.txt\n'}
+[3.643298] (zed_cv) StdoutLine: {'line': b'writing entry points to ../../build/zed_cv/zed_cv.egg-info/entry_points.txt\n'}
+[3.643550] (zed_cv) StdoutLine: {'line': b'writing requirements to ../../build/zed_cv/zed_cv.egg-info/requires.txt\n'}
+[3.643784] (zed_cv) StdoutLine: {'line': b'writing top-level names to ../../build/zed_cv/zed_cv.egg-info/top_level.txt\n'}
+[3.683244] (zed_cv) StdoutLine: {'line': b"writing manifest file '../../build/zed_cv/zed_cv.egg-info/SOURCES.txt'\n"}
+[3.717022] (-) TimerEvent: {}
+[3.723196] (zed_cv) StdoutLine: {'line': b"reading manifest file '../../build/zed_cv/zed_cv.egg-info/SOURCES.txt'\n"}
+[3.724328] (zed_cv) StdoutLine: {'line': b"writing manifest file '../../build/zed_cv/zed_cv.egg-info/SOURCES.txt'\n"}
+[3.724725] (zed_cv) StdoutLine: {'line': b'running build\n'}
+[3.724975] (zed_cv) StdoutLine: {'line': b'running build_py\n'}
+[3.725326] (zed_cv) StdoutLine: {'line': b'creating /home/jasper/dev/zed_opencv_pi/build/zed_cv/build\n'}
+[3.725566] (zed_cv) StdoutLine: {'line': b'creating /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib\n'}
+[3.725799] (zed_cv) StdoutLine: {'line': b'creating /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib/zed_cv\n'}
+[3.726048] (zed_cv) StdoutLine: {'line': b'copying zed_cv/__init__.py -> /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib/zed_cv\n'}
+[3.726285] (zed_cv) StdoutLine: {'line': b'copying zed_cv/zed_pub.py -> /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib/zed_cv\n'}
+[3.726450] (zed_cv) StdoutLine: {'line': b'copying zed_cv/zed_sub.py -> /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib/zed_cv\n'}
+[3.726537] (zed_cv) StdoutLine: {'line': b'running install\n'}
+[3.755815] (zed_cv) StderrLine: {'line': b'/home/jasper/.local/lib/python3.8/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[3.756312] (zed_cv) StderrLine: {'line': b'  warnings.warn(\n'}
+[3.770175] (zed_cv) StdoutLine: {'line': b'running install_lib\n'}
+[3.791112] (zed_cv) StdoutLine: {'line': b'creating /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv\n'}
+[3.791457] (zed_cv) StdoutLine: {'line': b'copying /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib/zed_cv/__init__.py -> /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv\n'}
+[3.791680] (zed_cv) StdoutLine: {'line': b'copying /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib/zed_cv/zed_pub.py -> /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv\n'}
+[3.791838] (zed_cv) StdoutLine: {'line': b'copying /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib/zed_cv/zed_sub.py -> /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv\n'}
+[3.792428] (zed_cv) StdoutLine: {'line': b'byte-compiling /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv/__init__.py to __init__.cpython-38.pyc\n'}
+[3.792812] (zed_cv) StdoutLine: {'line': b'byte-compiling /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv/zed_pub.py to zed_pub.cpython-38.pyc\n'}
+[3.793533] (zed_cv) StdoutLine: {'line': b'byte-compiling /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv/zed_sub.py to zed_sub.cpython-38.pyc\n'}
+[3.794193] (zed_cv) StdoutLine: {'line': b'running install_data\n'}
+[3.815038] (zed_cv) StdoutLine: {'line': b'creating /home/jasper/dev/zed_opencv_pi/install/zed_cv/share/ament_index\n'}
+[3.815371] (zed_cv) StdoutLine: {'line': b'creating /home/jasper/dev/zed_opencv_pi/install/zed_cv/share/ament_index/resource_index\n'}
+[3.815584] (zed_cv) StdoutLine: {'line': b'creating /home/jasper/dev/zed_opencv_pi/install/zed_cv/share/ament_index/resource_index/packages\n'}
+[3.815854] (zed_cv) StdoutLine: {'line': b'copying resource/zed_cv -> /home/jasper/dev/zed_opencv_pi/install/zed_cv/share/ament_index/resource_index/packages\n'}
+[3.816036] (zed_cv) StdoutLine: {'line': b'copying package.xml -> /home/jasper/dev/zed_opencv_pi/install/zed_cv/share/zed_cv\n'}
+[3.816149] (zed_cv) StdoutLine: {'line': b'running install_egg_info\n'}
+[3.817060] (-) TimerEvent: {}
+[3.837106] (zed_cv) StdoutLine: {'line': b'Copying ../../build/zed_cv/zed_cv.egg-info to /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv-0.0.0-py3.8.egg-info\n'}
+[3.839094] (zed_cv) StdoutLine: {'line': b'running install_scripts\n'}
+[3.917173] (-) TimerEvent: {}
+[3.930391] (zed_cv) StdoutLine: {'line': b'Installing zed_pub script to /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/zed_cv\n'}
+[3.930769] (zed_cv) StdoutLine: {'line': b'Installing zed_sub script to /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/zed_cv\n'}
+[3.931213] (zed_cv) StdoutLine: {'line': b"writing list of installed files to '/home/jasper/dev/zed_opencv_pi/build/zed_cv/install.log'\n"}
+[4.007347] (zed_cv) CommandEnded: {'returncode': 0}
+[4.017348] (-) TimerEvent: {}
+[4.119202] (-) TimerEvent: {}
+[4.225735] (-) TimerEvent: {}
+[4.326289] (-) TimerEvent: {}
+[4.394037] (zed_cv) JobEnded: {'identifier': 'zed_cv', 'rc': 0}
+[4.396291] (-) EventReactorShutdown: {}

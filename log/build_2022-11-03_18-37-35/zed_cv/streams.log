@@ -1,0 +1,31 @@
+[1.778s] Invoking command in '/home/jasper/dev/zed_opencv_pi/src/zed_cv': PYTHONPATH=/home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/zed_cv build --build-base /home/jasper/dev/zed_opencv_pi/build/zed_cv/build install --prefix /home/jasper/dev/zed_opencv_pi/install/zed_cv --record /home/jasper/dev/zed_opencv_pi/build/zed_cv/install.log --single-version-externally-managed
+[2.183s] /home/jasper/.local/lib/python3.8/site-packages/setuptools/dist.py:771: UserWarning: Usage of dash-separated 'script-dir' will not be supported in future versions. Please use the underscore name 'script_dir' instead
+[2.184s]   warnings.warn(
+[2.184s] /home/jasper/.local/lib/python3.8/site-packages/setuptools/dist.py:771: UserWarning: Usage of dash-separated 'install-scripts' will not be supported in future versions. Please use the underscore name 'install_scripts' instead
+[2.184s]   warnings.warn(
+[2.294s] running egg_info
+[2.311s] writing ../../build/zed_cv/zed_cv.egg-info/PKG-INFO
+[2.312s] writing dependency_links to ../../build/zed_cv/zed_cv.egg-info/dependency_links.txt
+[2.312s] writing entry points to ../../build/zed_cv/zed_cv.egg-info/entry_points.txt
+[2.312s] writing requirements to ../../build/zed_cv/zed_cv.egg-info/requires.txt
+[2.313s] writing top-level names to ../../build/zed_cv/zed_cv.egg-info/top_level.txt
+[2.353s] reading manifest file '../../build/zed_cv/zed_cv.egg-info/SOURCES.txt'
+[2.355s] writing manifest file '../../build/zed_cv/zed_cv.egg-info/SOURCES.txt'
+[2.355s] running build
+[2.355s] running build_py
+[2.355s] copying zed_cv/zed_pub.py -> /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib/zed_cv
+[2.356s] running install
+[2.356s] /home/jasper/.local/lib/python3.8/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[2.356s]   warnings.warn(
+[2.366s] running install_lib
+[2.382s] copying /home/jasper/dev/zed_opencv_pi/build/zed_cv/build/lib/zed_cv/zed_pub.py -> /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv
+[2.383s] byte-compiling /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv/zed_pub.py to zed_pub.cpython-38.pyc
+[2.384s] running install_data
+[2.400s] running install_egg_info
+[2.421s] removing '/home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv-0.0.0-py3.8.egg-info' (and everything under it)
+[2.422s] Copying ../../build/zed_cv/zed_cv.egg-info to /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages/zed_cv-0.0.0-py3.8.egg-info
+[2.424s] running install_scripts
+[2.505s] Installing zed_pub script to /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/zed_cv
+[2.505s] Installing zed_sub script to /home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/zed_cv
+[2.506s] writing list of installed files to '/home/jasper/dev/zed_opencv_pi/build/zed_cv/install.log'
+[2.574s] Invoked command in '/home/jasper/dev/zed_opencv_pi/src/zed_cv' returned '0': PYTHONPATH=/home/jasper/dev/zed_opencv_pi/install/zed_cv/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/zed_cv build --build-base /home/jasper/dev/zed_opencv_pi/build/zed_cv/build install --prefix /home/jasper/dev/zed_opencv_pi/install/zed_cv --record /home/jasper/dev/zed_opencv_pi/build/zed_cv/install.log --single-version-externally-managed
