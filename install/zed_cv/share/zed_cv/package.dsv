@@ -1,6 +1,0 @@
-source;share/zed_cv/hook/pythonpath.ps1
-source;share/zed_cv/hook/pythonpath.dsv
-source;share/zed_cv/hook/pythonpath.sh
-source;share/zed_cv/hook/ament_prefix_path.ps1
-source;share/zed_cv/hook/ament_prefix_path.dsv
-source;share/zed_cv/hook/ament_prefix_path.sh
