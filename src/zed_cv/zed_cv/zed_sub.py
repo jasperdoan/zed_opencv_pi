@@ -5,7 +5,6 @@ import rclpy                                                # Python library for
 from rclpy.node import Node                                 # Handles the creation of nodes
 from rclpy.qos import qos_profile_sensor_data               # Quality of Service profile for sensor data
 from sensor_msgs.msg import Image                           # Image is the message type
-from rclpy.callback_groups import ReentrantCallbackGroup    # Handles the creation of callback groups
 import cv2                                                  # OpenCV library
 from cv_bridge import CvBridge                              # Package to convert between ROS and OpenCV Images
 import numpy as np                                          # Python library for scientific computing
@@ -14,14 +13,11 @@ import numpy as np                                          # Python library for
 
 class ZedSubscriber(Node):
     def __init__(self):
-        super().__init__('zed_sub')                                                                             # Create the node
-
-        self.callback_group = ReentrantCallbackGroup()                                                          # Create a callback group
+        super().__init__('zed_sub')                                                                             # Create the node                                                         # Create a callback group
 
         # Create a subscriber with the appropriate topic, message type, and callback function
         self.subscription = self.create_subscription( Image, 'zed/images', self.listener_callback, 
-                                                      qos_profile=qos_profile_sensor_data,
-                                                      callback_group=self.callback_group)
+                                                      qos_profile=qos_profile_sensor_data)
         self.subscription                                                                                       # Prevent unused variable warning   
         
         self.br = CvBridge()                                                                                    # Used to convert between ROS and OpenCV images

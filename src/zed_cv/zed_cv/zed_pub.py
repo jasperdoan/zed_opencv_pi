@@ -35,7 +35,7 @@ class ZedPublisher(Node):
                 # corners, ids = cv2.aruco.detectMarkers(frame, aruco_dict, parameters=parameters)           #     Detect the markers
                 # frame = cv2.aruco.drawDetectedMarkers(frame, corners, ids)              #     Draw the markers
                 # # ======================================================================
-
+                
                 self.get_logger().info('🤧 Publishing Zed frames 😮‍💨')               
                 self.publisher.publish(self.br.cv2_to_compressed_imgmsg(frame))         # Publish the frame
 
