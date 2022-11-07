@@ -33,7 +33,7 @@ class ZedSubscriber(Node):
 
         try:                                                                                                    # Try to create the directory   
             os.makedirs(self.media_path, exist_ok=True)                                                         # Create the directory if it does not exist   
-        except OSError as e                                                                                     # Catch any error that occurs
+        except OSError as e:                                                                                    # Catch any error that occurs
             self.get_logger().exception("Failed to create media parent directory")                              # Print the error
 
         now = datetime.now().strftime('%m-%d-%Y_%H:%M:%S')                                                      # Get the current date and time
