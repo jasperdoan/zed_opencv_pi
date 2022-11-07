@@ -3,9 +3,9 @@ import sys                                                  # Import the sys mod
 from datetime import datetime                               # Import the datetime module for timestamping
 import rclpy                                                # Python library for ROS 2
 from rclpy.node import Node                                 # Handles the creation of nodes
-from rclpy.callback_groups import ReentrantCallbackGroup    # Handles the creation of callback groups
 from rclpy.qos import qos_profile_sensor_data               # Quality of Service profile for sensor data
 from sensor_msgs.msg import Image                           # Image is the message type
+from rclpy.callback_groups import ReentrantCallbackGroup    # Handles the creation of callback groups
 import cv2                                                  # OpenCV library
 from cv_bridge import CvBridge                              # Package to convert between ROS and OpenCV Images
 import numpy as np                                          # Python library for scientific computing
@@ -29,7 +29,7 @@ class ZedSubscriber(Node):
         frame_height = 360                                                                                      # Set the frame height
 
         self.frame = np.zeros([frame_height, frame_width, 4], dtype=np.uint8)                                   # Create a blank image
-        self.media_path = Path(sys.argv[0]).parent / "science_recordings" / "zed2i"                             # Set the path to save the video
+        self.media_path = os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])), 'recordings', 'zed2i')   # Set the path to save the video
 
         try:                                                                                                    # Try to create the directory   
             os.makedirs(self.media_path, exist_ok=True)                                                         # Create the directory if it does not exist   
@@ -48,11 +48,11 @@ class ZedSubscriber(Node):
 
 
     def listener_callback(self, data):
-        self.frame = self.br.compressed_imgmsg_to_cv2(data)                                                     # Convert the ROS image message to an OpenCV image
+        self.frame = self.br.compressed_imgmsg_to_cv2(data)                                                     # Convert the ROS image to an OpenCV image
         self.out.write(self.frame)                                                                              # Write the frame to the video file
 
         if self.verbose:                                                                                        # If the verbose flag is set
-            self.get_logger().info('😩 Receiving video frame!! 😫')                                            # Display the message on the console
+            self.get_logger().info('😩 Receiving video frame!! 😫')                                             # Display the message on the console
         
         if self.snapshot:                                                                                       # If the snapshot flag is set
             now = datetime.now().strftime('%m-%d-%Y_%H:%M:%S')                                                  # Get the current date and time
@@ -77,7 +77,7 @@ def main(args=None):
     try:
         rclpy.spin(zed_sub)                                         # Spin the node
     except Exception as e:                                          # Catch any error that occurs
-        zed_sub.get_logger().exception('😭 Failed to spin 😭')     # Print the error
+        zed_sub.get_logger().info(f'😭 Error: {e} 😭')              # Print the error
     finally:                                                        # Always do the following
         if zed_sub.gui:                                             # If the GUI flag is set
             cv2.destroyAllWindows()                                 #     Destroy all windows

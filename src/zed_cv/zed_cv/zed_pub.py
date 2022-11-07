@@ -8,12 +8,6 @@ import numpy as np                              # Create the node and spin it
 
 
 
-class Resolution:
-    width = 1280
-    height = 720
-
-
-
 class ZedPublisher(Node):
     def __init__(self):
         super().__init__('zed_pub')
@@ -24,13 +18,6 @@ class ZedPublisher(Node):
         self.cap = cv2.VideoCapture(0)                                                  # Initialize the camera
         self.br = CvBridge()                                                            # Used to convert between ROS and OpenCV Images
 
-        image_size = Resolution()                                                       # Resolution:
-        image_size.width = 1280                                                         #     Width = 1280
-        image_size.height = 720                                                         #     Height = 720
-
-        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, image_size.width * 2)                    # Set the 
-        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, image_size.height)                      # resolution
-
 
 
     def timer_callback(self):
@@ -38,19 +25,19 @@ class ZedPublisher(Node):
             success, frame = self.cap.read()                                            # Read a frame from the camera
 
             if success:                                                                 # If there is a frame
-                # ==== Aruco detection =================================================
-                # ======================================================================
-                frame = np.split(frame, 2, axis=1)[0]                                   #     Split the frame in two
-                frame = cv2.resize(frame, (640, 360), interpolation=cv2.INTER_AREA)     #     Resize the frame
+                # # ==== Aruco detection =================================================
+                # # ======================================================================
+                # frame = np.split(frame, 2, axis=1)[0]                                   #     Split the frame in two
+                # frame = cv2.resize(frame, (640, 360), interpolation=cv2.INTER_AREA)     #     Resize the frame
 
-                aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_4X4_50)            #     Create the aruco dictionary
-                param = cv2.aruco.DetectorParameters_create()                           #     Create the aruco parameters
-                corners, ids = cv2.aruco.detectMarkers(frame, aruco_dict, param=param)  #     Detect the markers
-                frame = cv2.aruco.drawDetectedMarkers(frame, corners, ids)              #     Draw the markers
-                # ======================================================================
+                # aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_4X4_50)            #     Create the aruco dictionary
+                # parameters = cv2.aruco.DetectorParameters_create()                      #     Create the aruco parameters
+                # corners, ids = cv2.aruco.detectMarkers(frame, aruco_dict, parameters=parameters)           #     Detect the markers
+                # frame = cv2.aruco.drawDetectedMarkers(frame, corners, ids)              #     Draw the markers
+                # # ======================================================================
 
                 self.get_logger().info('🤧 Publishing Zed frames 😮‍💨')               
-                self.publisher.publish(self.br.cv2_to_compressed_imgmsg(frame))         #     Publish the frame
+                self.publisher.publish(self.br.cv2_to_compressed_imgmsg(frame))         # Publish the frame
 
             else:                                                                       # If there is no frame             
                 self.get_logger().info(f'😭 Unsuccessful frames capture 😭')  
@@ -69,7 +56,7 @@ def main(args=None):
     try:                                                           # Try to spin the node
         rclpy.spin(zed_pub)                                        #     Spin the node
     except Exception as e:                                         # Catch any error that occurs
-        zed_pub.get_logger().exception('😭 Failed to spin 😭')    # Print the error
+        zed_pub.get_logger().info(f'😭 Error: {e} 😭')             #     Print the error
     finally:                                                       # Finally
         zed_pub.cap.release()                                      #     Release the camera
         zed_pub.destroy_node()                                     #     Destroy the node
