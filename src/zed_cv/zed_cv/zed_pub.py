@@ -38,6 +38,8 @@ class ZedPublisher(Node):
             success, frame = self.cap.read()                                            # Read a frame from the camera
 
             if success:                                                                 # If there is a frame
+                # ==== Aruco detection =================================================
+                # ======================================================================
                 frame = np.split(frame, 2, axis=1)[0]                                   #     Split the frame in two
                 frame = cv2.resize(frame, (640, 360), interpolation=cv2.INTER_AREA)     #     Resize the frame
 
@@ -45,6 +47,7 @@ class ZedPublisher(Node):
                 param = cv2.aruco.DetectorParameters_create()                           #     Create the aruco parameters
                 corners, ids = cv2.aruco.detectMarkers(frame, aruco_dict, param=param)  #     Detect the markers
                 frame = cv2.aruco.drawDetectedMarkers(frame, corners, ids)              #     Draw the markers
+                # ======================================================================
 
                 self.get_logger().info('🤧 Publishing Zed frames 😮‍💨')               
                 self.publisher.publish(self.br.cv2_to_compressed_imgmsg(frame))         #     Publish the frame
@@ -59,20 +62,18 @@ class ZedPublisher(Node):
 
 
 def main(args=None):
-    
-        rclpy.init(args=args)                                          # Initialize the ROS client library for Python
-        zed_pub = ZedPublisher()                                       # Create the node
 
-        try:                                                           # Try to spin the node
-            rclpy.spin(zed_pub)                                        #     Spin the node
-        except Exception as e:                                         # If there is an exception
-            zed_pub.get_logger().info(f'😭 {e} 😭')                   #     Cry about it
-        except KeyboardInterrupt:                                      # If the user presses Ctrl+C
-            zed_pub.get_logger().info(f'😭 Keyboard Interrupt 😭\n')  #     Cry about it
-        finally:                                                       # Finally
-            zed_pub.cap.release()                                      #     Release the camera
-            zed_pub.destroy_node()                                     #     Destroy the node
-            rclpy.shutdown()                                           #     Shutdown the ROS client library for Python
+    rclpy.init(args=args)                                          # Initialize the ROS client library for Python
+    zed_pub = ZedPublisher()                                       # Create the node
+
+    try:                                                           # Try to spin the node
+        rclpy.spin(zed_pub)                                        #     Spin the node
+    except Exception as e:                                         # Catch any error that occurs
+        zed_pub.get_logger().exception('😭 Failed to spin 😭')    # Print the error
+    finally:                                                       # Finally
+        zed_pub.cap.release()                                      #     Release the camera
+        zed_pub.destroy_node()                                     #     Destroy the node
+        rclpy.shutdown()                                           #     Shutdown the ROS client library for Python
 
 if __name__ == '__main__':
     main()

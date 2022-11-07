@@ -29,12 +29,12 @@ class ZedSubscriber(Node):
         frame_height = 360                                                                                      # Set the frame height
 
         self.frame = np.zeros([frame_height, frame_width, 4], dtype=np.uint8)                                   # Create a blank image
-        self.media_path = os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])), 'recordings', 'zed2i')   # Set the path to save the video
+        self.media_path = Path(sys.argv[0]).parent / "science_recordings" / "zed2i"                             # Set the path to save the video
 
         try:                                                                                                    # Try to create the directory   
             os.makedirs(self.media_path, exist_ok=True)                                                         # Create the directory if it does not exist   
         except OSError as e                                                                                     # Catch any error that occurs
-            self.get_logger().info(f'{e}')                                                                      # Print the error
+            self.get_logger().exception("Failed to create media parent directory")                                                                      # Print the error
 
         now = datetime.now().strftime('%m-%d-%Y_%H:%M:%S')                                                      # Get the current date and time
         self.out = cv2.VideoWriter(os.path.join(self.media_path, 'ZED2i_'+now+'.mp4'),                          # Create the video writer
@@ -70,21 +70,19 @@ class ZedSubscriber(Node):
 def main(args=None):
     rclpy.init(args=args)                                           # Initialize the rclpy library
 
-    zed_subs = ZedSubscriber()                                      # Create the node
-    zed_subs.gui = True                                             # Set the GUI flag to true
+    zed_sub = ZedSubscriber()                                       # Create the node
+    zed_sub.gui = True                                              # Set the GUI flag to true
     cv2.namedWindow('ZED2i View', cv2.WINDOW_NORMAL)                # Create a window
 
     try:
-        rclpy.spin(zed_subs)                                        # Spin the node
+        rclpy.spin(zed_sub)                                         # Spin the node
     except Exception as e:                                          # Catch any error that occurs
-        zed_subs.get_logger().info(f'😭 {e} 😭')                   #     Print the error
-    except KeyboardInterrupt:                                       # Catch a keyboard interrupt
-        zed_subs.get_logger().info(f'😭 Keyboard Interrupt 😭\n')  #     Print the message
+        zed_sub.get_logger().exception('😭 Failed to spin 😭')     # Print the error
     finally:                                                        # Always do the following
-        if zed_subs.gui:                                            # If the GUI flag is set
+        if zed_sub.gui:                                             # If the GUI flag is set
             cv2.destroyAllWindows()                                 #     Destroy all windows
-        zed_subs.out.release()                                      # Release the video writer
-        zed_subs.destroy_node()                                     # Destroy the node
+        zed_sub.out.release()                                       # Release the video writer
+        zed_sub.destroy_node()                                      # Destroy the node
         rclpy.shutdown()                                            # Shutdown the rclpy library
 
 
