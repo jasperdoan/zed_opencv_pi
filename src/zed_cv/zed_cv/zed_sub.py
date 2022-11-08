@@ -73,7 +73,7 @@ def main(args=None):
     try:
         rclpy.spin(zed_sub)                                         # Spin the node
     except Exception as e:                                          # Catch any error that occurs
-        zed_sub.get_logger().info(f'😭 Error: {e} 😭')              # Print the error
+        zed_sub.get_logger().info(f'😭 Error: {e} 😭')             # Print the error
     finally:                                                        # Always do the following
         if zed_sub.gui:                                             # If the GUI flag is set
             cv2.destroyAllWindows()                                 #     Destroy all windows

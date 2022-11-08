@@ -20,30 +20,27 @@ class ZedPublisher(Node):
 
 
 
-    def timer_callback(self):
-        if self.count_subscribers('zed/images') > 0:                                    # Check if there are subscribers
-            success, frame = self.cap.read()                                            # Read a frame from the camera
+    def timer_callback(self):                                                       # Check if there are subscribers
+        success, frame = self.cap.read()                                            # Read a frame from the camera
 
-            if success:                                                                 # If there is a frame
-                # # ==== Aruco detection =================================================
-                # # ======================================================================
-                # frame = np.split(frame, 2, axis=1)[0]                                   #     Split the frame in two
-                # frame = cv2.resize(frame, (640, 360), interpolation=cv2.INTER_AREA)     #     Resize the frame
+        if success:                                                                 # If there is a frame
+            # ==== Aruco detection =================================================
+            # ======================================================================
+            frame = np.split(frame, 2, axis=1)[0]                                   #     Split the frame in two
+            frame = cv2.resize(frame, (640, 360), interpolation=cv2.INTER_AREA)     #     Resize the frame
 
-                # aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_4X4_50)            #     Create the aruco dictionary
-                # parameters = cv2.aruco.DetectorParameters_create()                      #     Create the aruco parameters
-                # corners, ids = cv2.aruco.detectMarkers(frame, aruco_dict, parameters=parameters)           #     Detect the markers
-                # frame = cv2.aruco.drawDetectedMarkers(frame, corners, ids)              #     Draw the markers
-                # # ======================================================================
-                
-                self.get_logger().info('🤧 Publishing Zed frames 😮‍💨')               
-                self.publisher.publish(self.br.cv2_to_compressed_imgmsg(frame))         # Publish the frame
+            aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_4X4_50)            #     Create the aruco dictionary
+            parameters = cv2.aruco.DetectorParameters_create()                      #     Create the aruco parameters
+            corners, ids = cv2.aruco.detectMarkers(frame, aruco_dict, parameters=parameters)           #     Detect the markers
+            frame = cv2.aruco.drawDetectedMarkers(frame, corners, ids)              #     Draw the markers
+            # ======================================================================
+            
+            self.get_logger().info('🤧 Publishing Zed frames 😮‍💨')               
+            self.publisher.publish(self.br.cv2_to_compressed_imgmsg(frame, "bgr8")) # Publish the frame
 
-            else:                                                                       # If there is no frame             
-                self.get_logger().info(f'😭 Unsuccessful frames capture 😭')  
-        
-        else:                                                                           # If there are no subscribers                  
-            self.get_logger().info(f'🥺 No subscribers to receive message 🥺')
+        else:                                                                       # If there is no frame             
+            self.get_logger().info(f'😭 Unsuccessful frames capture 😭')  
+
 
 
 
@@ -56,7 +53,7 @@ def main(args=None):
     try:                                                           # Try to spin the node
         rclpy.spin(zed_pub)                                        #     Spin the node
     except Exception as e:                                         # Catch any error that occurs
-        zed_pub.get_logger().info(f'😭 Error: {e} 😭')             #     Print the error
+        zed_pub.get_logger().info(f'😭 Error: {e} 😭')            #     Print the error
     finally:                                                       # Finally
         zed_pub.cap.release()                                      #     Release the camera
         zed_pub.destroy_node()                                     #     Destroy the node
