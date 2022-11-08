@@ -26,8 +26,10 @@ class ZedPublisher(Node):
         if success:                                                                 # If there is a frame
             # ==== Aruco detection =================================================
             # ======================================================================
-            frame = np.split(frame, 2, axis=1)[0]                                   #     Split the frame in two
-            frame = cv2.resize(frame, (640, 360), interpolation=cv2.INTER_AREA)     #     Resize the frame
+            # frame = np.split(frame, 2, axis=1)[0]                                   #     Split the frame in two
+            # frame = cv2.resize(frame, (640, 360), interpolation=cv2.INTER_AREA)     #     Resize the frame
+
+            frame = frame[0:640, 0:360]
 
             aruco_dict = cv2.aruco.Dictionary_get(cv2.aruco.DICT_4X4_50)            #     Create the aruco dictionary
             parameters = cv2.aruco.DetectorParameters_create()                      #     Create the aruco parameters
@@ -36,7 +38,7 @@ class ZedPublisher(Node):
             # ======================================================================
             
             self.get_logger().info('🤧 Publishing Zed frames 😮‍💨')               
-            self.publisher.publish(self.br.cv2_to_compressed_imgmsg(frame, "bgr8")) # Publish the frame
+            self.publisher.publish(self.br.cv2_to_compressed_imgmsg(frame))         # Publish the frame
 
         else:                                                                       # If there is no frame             
             self.get_logger().info(f'😭 Unsuccessful frames capture 😭')  
