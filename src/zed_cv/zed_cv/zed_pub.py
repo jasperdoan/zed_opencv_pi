@@ -11,7 +11,7 @@ import numpy as np                              # Create the node and spin it
 class ZedPublisher(Node):
     def __init__(self):
         super().__init__('zed_pub')
-        self.publisher = self.create_publisher(Image, 'zed/images', qos_profile=qos_profile_sensor_data)
+        self.publisher = self.create_publisher(Image, 'video_frames', qos_profile=qos_profile_sensor_data)
         timer_period = 1/30                                                             # FPS = 1 / timer_period
 
         self.timer = self.create_timer(timer_period, self.timer_callback)               # Create a timer with the callback function

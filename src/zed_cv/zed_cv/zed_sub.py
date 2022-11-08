@@ -16,25 +16,25 @@ class ZedSubscriber(Node):
         super().__init__('zed_sub')                                                                             # Create the node                                                         # Create a callback group
 
         # Create a subscriber with the appropriate topic, message type, and callback function
-        self.subscription = self.create_subscription( Image, 'zed/images', self.listener_callback, 
+        self.subscription = self.create_subscription( Image, 'video_frames', self.listener_callback, 
                                                       qos_profile=qos_profile_sensor_data)
         self.subscription                                                                                       # Prevent unused variable warning   
         
         self.br = CvBridge()                                                                                    # Used to convert between ROS and OpenCV images
-        frame_width = 640                                                                                       # Set the frame width
-        frame_height = 360                                                                                      # Set the frame height
+        # frame_width = 640                                                                                       # Set the frame width
+        # frame_height = 360                                                                                      # Set the frame height
 
-        self.frame = np.zeros([frame_height, frame_width, 4], dtype=np.uint8)                                   # Create a blank image
-        self.media_path = os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])), 'recordings', 'zed2i')   # Set the path to save the video
+        # self.frame = np.zeros([frame_height, frame_width, 4], dtype=np.uint8)                                   # Create a blank image
+        # self.media_path = os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])), 'recordings', 'zed2i')   # Set the path to save the video
 
-        try:                                                                                                    # Try to create the directory   
-            os.makedirs(self.media_path, exist_ok=True)                                                         # Create the directory if it does not exist   
-        except OSError as e:                                                                                    # Catch any error that occurs
-            self.get_logger().exception("Failed to create media parent directory")                              # Print the error
+        # try:                                                                                                    # Try to create the directory   
+        #     os.makedirs(self.media_path, exist_ok=True)                                                         # Create the directory if it does not exist   
+        # except OSError as e:                                                                                    # Catch any error that occurs
+        #     self.get_logger().exception("Failed to create media parent directory")                              # Print the error
 
-        now = datetime.now().strftime('%m-%d-%Y_%H:%M:%S')                                                      # Get the current date and time
-        self.out = cv2.VideoWriter(os.path.join(self.media_path, 'ZED2i_'+now+'.mp4'),                          # Create the video writer
-                                   cv2.VideoWriter_fourcc(*'mp4v'), 30, (frame_width, frame_height))            # Set the video codec, frame rate, and frame size
+        # now = datetime.now().strftime('%m-%d-%Y_%H:%M:%S')                                                      # Get the current date and time
+        # self.out = cv2.VideoWriter(os.path.join(self.media_path, 'ZED2i_'+now+'.mp4'),                          # Create the video writer
+        #                            cv2.VideoWriter_fourcc(*'mp4v'), 30, (frame_width, frame_height))            # Set the video codec, frame rate, and frame size
 
         self.get_logger().info('ZED Subscriber has been initialized')                                           # Print status message
         self.snapshot = False                                                                                   # Set the snapshot flag to false
@@ -50,10 +50,10 @@ class ZedSubscriber(Node):
         if self.verbose:                                                                                        # If the verbose flag is set
             self.get_logger().info('😩 Receiving video frame!! 😫')                                             # Display the message on the console
         
-        if self.snapshot:                                                                                       # If the snapshot flag is set
-            now = datetime.now().strftime('%m-%d-%Y_%H:%M:%S')                                                  # Get the current date and time
-            cv2.imwrite(os.path.join(self.media_path, 'ZED2i_'+now+'.png'), self.frame)                         # Save the image
-            self.snapshot = False                                                                               # Reset the snapshot flag
+        # if self.snapshot:                                                                                       # If the snapshot flag is set
+        #     now = datetime.now().strftime('%m-%d-%Y_%H:%M:%S')                                                  # Get the current date and time
+        #     cv2.imwrite(os.path.join(self.media_path, 'ZED2i_'+now+'.png'), self.frame)                         # Save the image
+        #     self.snapshot = False                                                                               # Reset the snapshot flag
 
         if self.gui:                                                                                            # If the GUI flag is set
             cv2.imshow('ZED2i View', self.frame)                                                                # Display the image in a window
