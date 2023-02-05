@@ -1,37 +1,43 @@
-import rclpy                                    # Python Client Library for ROS 2
-from rclpy.node import Node                     # Handles the creation of nodes
-from sensor_msgs.msg import Image               # Image is the message type
-import cv2                                      # OpenCV library
-from cv_bridge import CvBridge                  # Package to convert between ROS and OpenCV Images
-import numpy as np                              # Create the node and spin it
+import rclpy
+from rclpy.node import Node
+from rclpy.qos import qos_profile_sensor_data
+from sensor_msgs.msg import CompressedImage
+import cv2
+from cv_bridge import CvBridge
+import numpy as np
 
+
+class Resolution:
+    width = 1280
+    height = 720
 
 
 class ZedPublisher(Node):
     def __init__(self):
         super().__init__('zed_pub')
-        self.publisher = self.create_publisher(Image, 'video_frames', 10)
-        timer_period = 0.1  # seconds                                                            # FPS = 1 / timer_period
- 
-        self.timer = self.create_timer(timer_period, self.timer_callback)              # Create a timer with the callback function
-        self.cap = cv2.VideoCapture(0)                                                  # Initialize the camera
-        self.br = CvBridge()                                                            # Used to convert between ROS and OpenCV Images
+        self.publisher = self.create_publisher(CompressedImage, '/osiris/drive/zed/images',
+                                               qos_profile=qos_profile_sensor_data)
+        timer_period = 1/30
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.camera = cv2.VideoCapture(0)
+        self.bridge = CvBridge()
+        image_size = Resolution()
+        image_size.width = 1280
+        image_size.height = 720
+        self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, image_size.width * 2)
+        self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, image_size.height)
 
 
 
     def timer_callback(self):                                                       # Check if there are subscribers
-        ret, frame = self.cap.read()                                                # Read a frame from the camera
-        frame = frame[0:480, 0:640]
-        frame = cv2.resize(frame, (160, 120))
-
-        if ret == True:
-            # Publish the image.
-            # The 'cv2_to_imgmsg' method converts an OpenCV
-            # image to a ROS 2 image message
-            self.publisher.publish(self.br.cv2_to_imgmsg(frame))
-
-        # Display the message on the console
-        self.get_logger().info('🤧 Publishing Zed frames 😮‍💨')
+        success, frame = self.camera.read()
+        if success:
+            frame = np.split(frame, 2, axis=1)[0]
+            frame = cv2.resize(frame, (640, 360), interpolation=cv2.INTER_AREA)
+            self.get_logger().info('Publishing ZED frame')
+            self.publisher.publish(self.bridge.cv2_to_compressed_imgmsg(frame))
+        else:
+            self.get_logger().info(f'Unsuccessful frame capture')
 
 
 
