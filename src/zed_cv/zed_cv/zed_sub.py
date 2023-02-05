@@ -16,7 +16,7 @@ class ZedSubscriber(Node):
         super().__init__('zed_sub')                                                                             # Create the node                                                         # Create a callback group
 
         self.callback_group = ReentrantCallbackGroup()
-        self.subscription = self.create_subscription(CompressedImage, '/osiris/drive/zed/images',
+        self.subscription = self.create_subscription(CompressedImage, 'images',
                                                      self.listener_callback, qos_profile=qos_profile_sensor_data, callback_group=self.callback_group)   
         
         self.bridge = CvBridge()

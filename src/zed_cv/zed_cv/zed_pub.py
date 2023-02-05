@@ -15,7 +15,7 @@ class Resolution:
 class ZedPublisher(Node):
     def __init__(self):
         super().__init__('zed_pub')
-        self.publisher = self.create_publisher(CompressedImage, '/osiris/drive/zed/images',
+        self.publisher = self.create_publisher(CompressedImage, 'images',
                                                qos_profile=qos_profile_sensor_data)
         timer_period = 1/30
         self.timer = self.create_timer(timer_period, self.timer_callback)
